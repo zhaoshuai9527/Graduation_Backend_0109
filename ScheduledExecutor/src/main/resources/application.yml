@@ -1,0 +1,15 @@
+server:
+  port: 1234
+project:
+  host: 127.0.0.1
+
+
+spring:
+  application:
+    name: scheduled
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.77.145.221:3306/lover?characterEncoding=utf-8
+    username: root
+    password: 0

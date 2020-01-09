@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.register.dao.RegisterDao">
+
+    <parameterMap id="student" type="com.register.entity.Student"></parameterMap>
+    <parameterMap id="teacher" type="com.register.entity.Teacher"></parameterMap>
+
+    <select id="qryStudent" resultType="int">
+        select count(*) from tf_f_student where stuNo = #{stuNo}
+    </select>
+
+    <insert id="registerStudent" parameterMap="student">
+        insert into tf_f_student(stuNo,stuName,
+                                stuPassword,stuSex,
+                                stuPhone,stuEmail,
+                                classNo)
+        values (#{stuNo}, #{stuName},
+                #{stuPassword}, #{stuSex},
+                #{stuPhone}, #{stuEmail},
+                #{classNo})
+    </insert>
+
+
+    <select id="qryTeacher" resultType="int">
+        select count(*) from tf_f_teacher where teachNo = #{teachNo}
+    </select>
+
+    <insert id="registerTeacher" parameterMap="teacher">
+        insert into tf_f_teacher(teachNo,teachName,
+                                teachPassword,
+                                teachPhone,teachEmail,
+                                departNo)
+        values (#{teachNo}, #{teachName},
+                #{teachPassword},
+                #{teachPhone}, #{teachEmail},
+                #{departNo})
+    </insert>
+
+</mapper>

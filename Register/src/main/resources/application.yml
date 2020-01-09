@@ -1,0 +1,21 @@
+server:
+  port: 1111
+project:
+  host: 127.0.0.1
+
+spring:
+  application:
+    name: register
+
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://120.77.145.221:3306/lover?characterEncoding=utf-8
+    username: root
+    password: 0
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:9527/eureka
+mybatis:
+  mapper-locations: classpath:config/*.xml

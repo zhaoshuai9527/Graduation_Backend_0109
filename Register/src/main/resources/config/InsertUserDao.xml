@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.register.dao.InsertUserDao">
+
+    <parameterMap id="user" type="com.register.entity.User"></parameterMap>
+
+    <select id="qryUser" resultType="int">
+        select count(*) from tf_f_User where userNo = #{userNo}
+    </select>
+
+    <insert id="insertUser" parameterMap="user">
+        insert into tf_f_user(userNo,password,
+                                userName,identity)
+        values (#{userNo}, #{password},
+                #{userName}, #{identity})
+    </insert>
+
+
+</mapper>
