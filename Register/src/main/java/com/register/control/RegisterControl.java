@@ -8,11 +8,10 @@ import com.register.entity.Teacher;
 import com.register.service.RegisterService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @RestController
@@ -22,8 +21,8 @@ public class RegisterControl {
     @Autowired
     private RegisterService registerService;
 
-    @Autowired(required = false)
-    private SmsUtil smsUtil;
+    @Autowired
+    private final static Logger logger = LoggerFactory.getLogger(RegisterControl.class);
 
     @RequestMapping(value = "/registerStudent",method = RequestMethod.POST)
     @ApiOperation(value = "学生注册", notes = "学生注册", tags = {"RegisterInterface"}, produces = "application/json")
@@ -51,14 +50,12 @@ public class RegisterControl {
         return new Result(false,2002,"注册失败");
     }
 
-    @RequestMapping(value = "/getSMSCode",method = RequestMethod.POST)
-    public void getSMSCode(String phone,String sign_name,String template_code){
-        try {
-            smsUtil.sendSms(phone,sign_name,template_code);
-        } catch (ClientException e) {
-            e.printStackTrace();
-        }
+    @PostMapping("sendSms/{phone}")
+    public Result sendSms(@PathVariable String phone){
+        logger.info("传进来的电话号码："+phone);
 
+        registerService.sendSms(phone);
+        return new Result(true, 2001,"短信发送成功") ;
     }
 
 

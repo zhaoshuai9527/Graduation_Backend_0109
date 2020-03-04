@@ -2,9 +2,15 @@ server:
   port: 9527
 
 eureka:
+  #启动自我保护机制
+  server:
+    enable-self-preservation: true
   client:
     #是否将本服务 注册到 注册中心中
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
       defaultZone: http://127.0.0.1:${server.port}/eureka/
+
+  instance:
+    prefer-ip-address: true

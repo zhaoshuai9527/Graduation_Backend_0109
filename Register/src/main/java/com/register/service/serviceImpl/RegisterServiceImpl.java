@@ -8,9 +8,15 @@ import com.register.entity.User;
 import com.register.service.RegisterService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class RegisterServiceImpl implements RegisterService {
@@ -19,6 +25,10 @@ public class RegisterServiceImpl implements RegisterService {
     private RegisterDao registerDao;
     @Autowired
     private InsertUserDao insertUserDao;
+    @Autowired
+    private RedisTemplate redisTemplate ;
+    @Autowired
+    private RabbitTemplate rabbitTemplate ;
     @Autowired
     private final static Logger logger = LoggerFactory.getLogger(RegisterServiceImpl.class);
 
@@ -66,5 +76,20 @@ public class RegisterServiceImpl implements RegisterService {
         }else{
             return 2;//该学号已经被注册
         }
+    }
+
+    //验证码
+    public void sendSms(String phone){
+        //6位验证码
+        String smsCode = ((int)(Math.random()*900000) + 100000) + "" ;
+        //redis  : sms_1888888888  value:144545
+        redisTemplate.opsForValue().set("smscode_"+phone  , smsCode  ,1 , TimeUnit.DAYS);
+        System.out.println(phone+"-"+smsCode);
+        //发送  -> MQ
+        Map<String,String> map = new HashMap<>();
+        map.put("phone",phone) ;
+        map.put("code",smsCode) ;
+        logger.info(map.get("code")+"++"+map.get("phone"));
+        rabbitTemplate.convertAndSend("sms",  map);
     }
 }

@@ -6,4 +6,5 @@ import com.register.entity.Teacher;
 public interface RegisterService {
     public int registerStudent(Student student);
     public int registerTeacher(Teacher teacher);
+    public void sendSms(String phone);
 }

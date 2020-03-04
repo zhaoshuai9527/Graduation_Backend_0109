@@ -1,32 +1,19 @@
 package com.login.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.io.Serializable;
 
-@Entity
-@Table(name = "tf_f_user")
-public class User implements Serializable {
-    @Id
+public class User  {
+
     private String userNo;
-    private String password;
     private String userName;
+    private String userEmail;
+    private String userPhone;
     private String identity;
+
+    private String userPassword;
     private String ipAddress;
     private String loginTime;
 
-    public User() {
-    }
 
-    public User(String userNo, String password, String userName, String identity, String ipAddress, String loginTime) {
-        this.userNo = userNo;
-        this.password = password;
-        this.userName = userName;
-        this.identity = identity;
-        this.ipAddress = ipAddress;
-        this.loginTime = loginTime;
-    }
 
     public String getUserNo() {
         return userNo;
@@ -34,14 +21,6 @@ public class User implements Serializable {
 
     public void setUserNo(String userNo) {
         this.userNo = userNo;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getUserName() {
@@ -74,5 +53,29 @@ public class User implements Serializable {
 
     public void setLoginTime(String loginTime) {
         this.loginTime = loginTime;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPhone() {
+        return userPhone;
+    }
+
+    public void setUserPhone(String userPhone) {
+        this.userPhone = userPhone;
     }
 }

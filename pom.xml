@@ -12,11 +12,11 @@
         <module>Register</module>
         <module>Login</module>
         <module>Common</module>
-        <module>Selected_Topic</module>
         <module>SMS</module>
         <module>ScheduledExecutor</module>
         <module>Eureka</module>
         <module>Zuul</module>
+        <module>TopicOperation</module>
     </modules>
 
     <properties>

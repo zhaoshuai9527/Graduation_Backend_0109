@@ -7,6 +7,12 @@ spring:
   application:
     name: register
 
+  redis:
+    host: 120.77.145.221
+
+  rabbitmq:
+    host: 120.77.145.221
+
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://120.77.145.221:3306/lover?characterEncoding=utf-8

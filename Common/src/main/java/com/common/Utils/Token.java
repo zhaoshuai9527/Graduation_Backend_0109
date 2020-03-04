@@ -12,8 +12,8 @@ import java.util.Map;
 
 @Component
 public class Token {
-    //设置过期时间  15分钟
-    private static final long EXPIRE_TIME = 15 * 60 * 1000;
+    //设置过期时间  10分钟
+    private static final long EXPIRE_TIME = 10 * 60 * 1000;
     //私钥
     private static final String TOKEN_SECRET = "zhaoShuai123";
 
