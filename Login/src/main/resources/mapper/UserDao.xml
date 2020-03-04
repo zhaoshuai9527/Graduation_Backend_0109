@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.login.dao.UserDao">
+
+
+    <select id="getUserListOfStudent" resultType="com.login.entity.User">
+        select * from tf_f_student where stuNo like  CONCAT(#{query},'%')
+    </select>
+    <select id="getUserListOfTeacher" resultType="com.login.entity.User">
+        select * from tf_f_teacher where teachNo like  CONCAT(#{query},'%')
+    </select>
+    <select id="getUserListOfAdmin" resultType="com.login.entity.User">
+        select * from tf_f_admin where adminNo like  CONCAT(#{query},'%')
+    </select>
+
+
+    <select id="getUserList" resultType="com.login.entity.User">
+        select * from tf_f_user where userNo like  CONCAT(#{query},'%')
+    </select>
+    <select id="getUserListOfAll" resultType="com.login.entity.User">
+        select * from tf_f_user
+    </select>
+
+
+
+    <select id="ifExistOfStudent" resultType="java.lang.Integer">
+        select count(*) from tf_f_student where stuNo = #{userNo}
+    </select>
+    <insert id="addStudent">
+        insert into tf_f_student(stuNo, stuName, stuPassword, stuPhone, stuEmail, identity)
+        values (#{userNo}, #{userName}, #{password}, #{mobile}, #{email}, #{identity})
+    </insert>
+
+    <select id="ifExistOfTeacher" resultType="java.lang.Integer">
+        select count(*) from tf_f_teacher where teachNo = #{userNo}
+    </select>
+    <insert id="addTeacher">
+        insert into tf_f_teacher(teachNo, teachName, teachPassword, teachPhone, teachEmail, identity)
+        values (#{userNo}, #{userName}, #{password}, #{mobile}, #{email}, #{identity})
+    </insert>
+
+    <select id="ifExistOfAdmin" resultType="java.lang.Integer">
+        select count(*) from tf_f_admin where adminNo = #{userNo}
+    </select>
+    <insert id="addAdmin">
+        insert into tf_f_admin(adminNo, adminName, adminPassword, adminPhone, adminEmail, identity)
+        values (#{userNo}, #{userName}, #{password}, #{mobile}, #{email}, #{identity})
+    </insert>
+    <insert id="addUser">
+        insert into tf_f_user(userNo, userName, userPassword, userPhone, userEmail, identity)
+        values (#{userNo}, #{userName}, #{password}, #{mobile}, #{email}, #{identity})
+    </insert>
+
+    <update id="editUser">
+        update tf_f_user set userName = #{userName}, userEmail = #{userEmail}, userPhone = #{userPhone}, identity = #{identity}
+        where userNo = #{userNo}
+    </update>
+
+    <delete id="deleteUser">
+        delete  from tf_f_user where userNo = #{userNo}
+    </delete>
+    <update id="updateUser">
+        update tf_f_user set  identity = #{identity}
+        where userNo = #{userNo}
+    </update>
+
+</mapper>
