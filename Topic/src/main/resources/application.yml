@@ -12,6 +12,18 @@ spring:
     url: jdbc:mysql://120.77.145.221:3306/lover?characterEncoding=utf-8
     username: root
     password: 0
+  redis:
+    host: 120.77.145.221
+    post: 6379
+    database: 2
+    password:
+    jedis:
+      pool:
+        max-active: 30 #连接池连接数（使用负值表示没有限制）
+        max-wait: 1000 #连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-idle: 8  #连接池中的最大空闲连接
+        min-idle: 3   #连接池中的最小空闲连接
+      timeout: 10000ms   #连接超时时间（毫秒）
 
 
 eureka:

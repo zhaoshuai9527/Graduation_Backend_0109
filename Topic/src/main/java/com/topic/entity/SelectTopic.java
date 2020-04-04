@@ -1,13 +1,14 @@
 package com.topic.entity;
 
-public class Selectwish {
+public class SelectTopic {
     private String titleNo;
     private String titleName;
-    private String teachNo;
-    private String teachName;
+    private String teacherNo;
+    private String teacherName;
     private String stuNo;
     private String stuName;
     private String selectTime;
+    private String count;// 剩余名额
 
     public String getTitleNo() {
         return titleNo;
@@ -25,12 +26,12 @@ public class Selectwish {
         this.titleName = titleName;
     }
 
-    public String getTeachNo() {
-        return teachNo;
+    public String getTeacherNo() {
+        return teacherNo;
     }
 
-    public void setTeachNo(String teachNo) {
-        this.teachNo = teachNo;
+    public void setTeacherNo(String teacherNo) {
+        this.teacherNo = teacherNo;
     }
 
     public String getStuNo() {
@@ -50,12 +51,12 @@ public class Selectwish {
         this.selectTime = selectTime;
     }
 
-    public String getTeachName() {
-        return teachName;
+    public String getTeacherName() {
+        return teacherName;
     }
 
-    public void setTeachName(String teachName) {
-        this.teachName = teachName;
+    public void setTeacherName(String teacherName) {
+        this.teacherName = teacherName;
     }
 
     public String getStuName() {
@@ -65,4 +66,17 @@ public class Selectwish {
     public void setStuName(String stuName) {
         this.stuName = stuName;
     }
+
+    public String getSelectTime() {
+        return selectTime;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
+    }
+
 }

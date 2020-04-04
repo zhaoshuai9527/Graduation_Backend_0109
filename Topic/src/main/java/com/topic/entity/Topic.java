@@ -8,6 +8,7 @@ public class Topic {
     private String teacherNo;
     private String admission;  //录取情况：0未选，1已选
     private String limitNum;  //限额人数
+    private String count;   // 剩余名额
 
     public String getTitleNo() {
         return titleNo;
@@ -64,5 +65,13 @@ public class Topic {
 
     public void setLimitNum(String limitNum) {
         this.limitNum = limitNum;
+    }
+
+    public String getCount() {
+        return count;
+    }
+
+    public void setCount(String count) {
+        this.count = count;
     }
 }

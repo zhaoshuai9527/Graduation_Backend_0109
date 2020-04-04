@@ -45,8 +45,3 @@ hystrix:
         isolation:
           thread:
             timeout-in-milliseconds: 3000
-
-
-
-
-

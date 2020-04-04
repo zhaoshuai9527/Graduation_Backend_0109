@@ -3,8 +3,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.login.dao.LoginDao">
 
-    <select id="qryUser" resultType="java.lang.Integer">
-        select count(*) from tf_f_user where userNo = #{userNo} and  userPassword = #{password}
+    <select id="qryUser" resultType="com.login.entity.UserInfo">
+        select userNo as userNo,userPassword as userPassword,userName as userName,
+        identity as identity ,ipAddress as ipAddress,loginTime as loginTime,
+        userPhone as userPhone, userEmail as userEmail
+
+         from tf_f_user where userNo = #{userNo} and  userPassword = #{password}
     </select>
 
 </mapper>

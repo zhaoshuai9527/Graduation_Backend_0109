@@ -1,11 +1,9 @@
 package com.topic.service;
 
 import com.github.pagehelper.PageInfo;
-import com.topic.entity.DeleteTopic;
 import com.topic.entity.QueryInfo;
-import com.topic.entity.Selectwish;
+import com.topic.entity.SelectTopic;
 import com.topic.entity.Topic;
-import org.springframework.stereotype.Service;
 
 
 public interface TopicService {
@@ -17,7 +15,10 @@ public interface TopicService {
 
     public int deleteTopic(String titleNo);
 
+    public PageInfo<Topic> getTopicListByTeacherName(QueryInfo queryInfo);
 
 
-    public int selectWishOneTopic(Selectwish selectwish);
+
+
+    public int selectTopic(SelectTopic selectTopic);
 }

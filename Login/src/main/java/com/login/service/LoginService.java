@@ -1,9 +1,10 @@
 package com.login.service;
 
 
-import org.springframework.stereotype.Service;
+
+import java.util.Map;
 
 
 public interface LoginService {
-    public int login(String userNo,String password);
+    public Map login(String userNo, String password);
 }
